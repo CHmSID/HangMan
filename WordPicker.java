@@ -2,11 +2,8 @@
 Author:		Jerzy Baran
 Uow to use:	Create an instance of WordPicker
 			Call getWord(WordPicker.WORD_DICTIONARY)
-									WORD_COUNTRY
-									WORD_NAME
-
-			Currently only WORD_DICTIONARY will return a word
-			the other two will return NULL
+								or	WORD_COUNTRY
+								or	WORD_NAME
 */
 
 import java.util.Scanner;
