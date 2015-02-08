@@ -1,3 +1,14 @@
+/*
+Author:		Jerzy Baran
+Uow to use:	Create an instance of WordPicker
+			Call getWord(WordPicker.WORD_DICTIONARY)
+									WORD_COUNTRY
+									WORD_NAME
+
+			Currently only WORD_DICTIONARY will return a word
+			the other two will return NULL
+*/
+
 import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
@@ -34,6 +45,8 @@ class WordPicker {
 
 			word = scanner.nextLine();
 		}
+
+		scanner.close();
 
 		return word;
 	}
