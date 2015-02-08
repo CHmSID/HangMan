@@ -18,7 +18,7 @@ class HangMan {
 		ArrayList<Integer> word = new ArrayList<>();
 		
 		Scanner in = new Scanner(System.in);
-		System.out.printf("%40s\n%s\n","HangMan","Keep in mind & and a space are also valid guesses");	//Name of the game.
+		System.out.printf("%40s\n%s\n","HangMan","Keep in mind you only have 20 guesses.");	//Name of the game.
 		System.out.printf("%s\n%s\n%s\n%s\n%s\n","Choose a category","1- word","2- country","3- name","4- Random");
 		System.out.printf("%s","Please select a number : ");
 		int j = in.nextInt();
@@ -49,7 +49,7 @@ class HangMan {
 			}
 			
 			System.out.println();		//new line.
-			System.out.printf("%s","Guess the letter: ");
+			System.out.printf("%s","Guess a letter: ");
 			char let =in.next().charAt(0);
 			let=Character.toLowerCase(let);
 			
@@ -69,10 +69,14 @@ class HangMan {
 			}
 			num--;	
 			if(guessedLet==guess.length()){
+				System.out.println("You guessed the correct word.");
+				System.out.println("You took "+(20-num)+" tries.");
 				num=0;
 			}
 		}
-		
+		if(guessedLet!=guess.length()){
+			System.out.println("You didn't guess the correct word.");
+		}
 		System.out.println("The word was : "+guess);
 	}
 }	
