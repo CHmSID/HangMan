@@ -1,11 +1,15 @@
 import java.util.Scanner;
 import java.util.Random;
+import java.util.ArrayList;
 
 class HangMan {
 	public static void main(String [] args) {
 		String guess ="";
 		Random rand = new Random();
 		int randomNumber = rand.nextInt(9) + 0;	//generate a random number.
+		ArrayList<Integer> word = new ArrayList<>();
+		
+		
 		
 		String [] countries = {"brazil","canada","colombia","oman","ireland",
 								"france","spain","poland","qatar","egypt"};
@@ -15,7 +19,7 @@ class HangMan {
 		
 		Scanner in = new Scanner(System.in);
 		System.out.printf("%40s\n","HangMan");	//Name of the game.
-		System.out.printf("%s\n%s\n%s","Choose a category","1-country","2-names");
+		System.out.printf("%s\n%s\n%s\n","Choose a category","1-country","2-names");
 		System.out.printf("%s","Please select a number (1 or 2): ");
 		int j = in.nextInt();
 		
@@ -29,37 +33,41 @@ class HangMan {
 			System.out.println("Invalid Input");
 		}
 		
-		int wordNum =0;	//the number of _ ;
+		
 		
 		for(int i=0;i<guess.length();i++){
-			wordNum++;
+			word.add(0);		//let the ArrayList be 0.
 		}
 		
-		
-		while(wordNum>0){
-			System.out.println();	//new line.
-			System.out.print("The word is : ");
-			
-			for(int i =0;i<wordNum;i++){
-				System.out.print("_");
+		int num=0;
+		while(num < guess.length()){
+			for(int i=0;i<guess.length();i++){
+				if(word.get(i)==0){			//if it's 0 == not gueesed.
+					System.out.print("_ ");
+				}
+				else{						//if it's 1 already guessed.
+					System.out.print(guess.charAt(i));
+				}
 			}
-			System.out.println();	//new line.
+			System.out.printf("%s\n","Guess the letter: ");
+			char let =in.next().charAt(0);
 			
-			char letter = in.next().charAt(0);	//take the first letter.
-			
-			for(int i=0;i<guess.length();i++){	//see if the input == one of the letters.
-				if(letter==guess.charAt(i)){
-					System.out.print(letter);
-					wordNum--;
+			for(int i=0;i<guess.length();i++){
+				if(let==guess.charAt(i)){
+					word.set(i,1);
+					num++;
 				}
 				else{
-					System.out.print("_");
+					;//do nothing for now.
 				}
 			}
+			
 		}
-	}	
 		
-	}	
+		
+		
+	}
+}	
 
 
 
