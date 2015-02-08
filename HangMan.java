@@ -64,7 +64,7 @@ class HangMan {
 			
 		}
 		
-		
+		System.out.println("The word was : "+guess);
 		
 	}
 }	
