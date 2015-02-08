@@ -39,7 +39,8 @@ class WordPicker {
 			fileName = "names.txt";
 
 		openFile(fileName);
-		int randomLine = randomNumber.nextInt(713);  //1-714
+		int noLines = getNumberOfLines(file);
+		int randomLine = randomNumber.nextInt(noLines - 1);
 
 		for(int i = 0; i < randomLine; i++) {
 
@@ -63,5 +64,27 @@ class WordPicker {
 				"Stack trace:\n", name);
 			e.printStackTrace();
 		}
+	}
+
+	private int getNumberOfLines(File f) {
+
+		try {
+
+			Scanner s = new Scanner(f);
+			int n = 0;
+			while(s.hasNextLine()) {
+
+				s.nextLine();
+				n++;
+			}
+
+			return n;
+		}
+		catch(IOException e) {
+
+			System.out.println("ERROR: could not get # of lines");
+		}
+
+		return 0;
 	}
 }
