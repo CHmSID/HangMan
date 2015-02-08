@@ -19,7 +19,7 @@ class HangMan {
 		
 		Scanner in = new Scanner(System.in);
 		System.out.printf("%40s\n%s\n","HangMan","Keep in mind & and a space are also valid guesses");	//Name of the game.
-		System.out.printf("%s\n%s\n%s\n%s\n%s\n","Choose a category","1- word","2- country","3- name","4-Random");
+		System.out.printf("%s\n%s\n%s\n%s\n%s\n","Choose a category","1- word","2- country","3- name","4- Random");
 		System.out.printf("%s","Please select a number : ");
 		int j = in.nextInt();
 		
@@ -52,6 +52,7 @@ class HangMan {
 			System.out.printf("%s","Guess the letter: ");
 			char let =in.next().charAt(0);
 			let=Character.toLowerCase(let);
+			
 			for(int i=0;i<guess.length();i++){
 				if(let==guess.charAt(i)){
 					if(word.get(i)==1){		// check if the letter was guessed previously. 
