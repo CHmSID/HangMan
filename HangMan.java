@@ -1,46 +1,38 @@
+/*
+	Author:		Mohammed Al Marhoon
+	
+	How to use: pick a number between 1-3 and then play the hangman game.
+				you only have 10 guesses.
+
+
+
+*/
 import java.util.Scanner;
 import java.util.Random;
 import java.util.ArrayList;
 
 class HangMan {
 	public static void main(String [] args) {
-		String guess ="";
 		Random rand = new Random();
-		int randomNumber = rand.nextInt(9) + 0;	//generate a random number.
+		WordPicker pick = new WordPicker();
 		ArrayList<Integer> word = new ArrayList<>();
 		
-		
-		
-		String [] countries = {"brazil","canada","colombia","oman","ireland",
-								"france","spain","poland","qatar","egypt"};
-		
-		//String [] names = {};
-		
-		
 		Scanner in = new Scanner(System.in);
-		System.out.printf("%40s\n","HangMan");	//Name of the game.
-		System.out.printf("%s\n%s\n%s\n","Choose a category","1-country","2-names");
-		System.out.printf("%s","Please select a number (1 or 2): ");
+		System.out.printf("%40s\n%s\n","HangMan","Keep in mind & and a space are also valid guesses");	//Name of the game.
+		System.out.printf("%s\n%s\n%s\n%s\n","Choose a category","1- word","2- country","3- name");
+		System.out.printf("%s","Please select a number : ");
 		int j = in.nextInt();
-		
-		if(j==1){
-			 guess = countries[randomNumber];
-		}
-		else if(j==2){
-			;// name.
-		}
-		else {
-			System.out.println("Invalid Input");
-		}
-		
+		String guess =pick.getWord(j);		//getting a random word.
+		guess = guess.toLowerCase();		//convert it to lowercase.
 		
 		
 		for(int i=0;i<guess.length();i++){
 			word.add(0);		//let the ArrayList be 0.
 		}
 		
-		int num=0;
-		while(num < guess.length()){
+		int num = 20; //the player only have 20 guesses.
+		while(num >0 ){
+		
 			for(int i=0;i<guess.length();i++){
 				if(word.get(i)==0){			//if it's 0 == not gueesed.
 					System.out.print("_ ");
@@ -49,21 +41,28 @@ class HangMan {
 					System.out.print(guess.charAt(i));
 				}
 			}
-			System.out.printf("%s\n","Guess the letter: ");
+			System.out.println();
+			System.out.printf("%s","Guess the letter: ");
 			char let =in.next().charAt(0);
-			
+			let=Character.toLowerCase(let);
 			for(int i=0;i<guess.length();i++){
 				if(let==guess.charAt(i)){
-					word.set(i,1);
-					num++;
+					if(word.get(i)==1){		// check if the letter was guessed previously. 
+						//do nothing.
+					}
+					else{
+						word.set(i,1);
+					}
 				}
 				else{
-					;//do nothing for now.
+					;//do nothing for now
 				}
 			}
+			num--;
 			
 		}
 
+		
 		System.out.println("The word was : "+guess);
 		
 	}
