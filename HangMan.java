@@ -37,7 +37,7 @@ class HangMan {
         
         for(int i=0;i<guess.length();i++){  //check if there is a space in the word
             if(guess.charAt(i)==' '){
-                word.get(i)=1;
+                word.set(i,1);
             }
         }
         
