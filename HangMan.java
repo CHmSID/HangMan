@@ -34,6 +34,13 @@ class HangMan {
 		for(int i=0;i<guess.length();i++){
 			word.add(0);					//let the ArrayList be 0.
 		}
+        
+        for(int i=0;i<guess.length();i++){  //check if there is a space in the word
+            if(guess.charAt(i)==' '){
+                word.get(i)=1;
+            }
+        }
+        
 		
 		int num = 20; //the player only have 20 guesses.
 		int guessedLet=0;
